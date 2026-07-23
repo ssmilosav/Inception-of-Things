@@ -17,8 +17,6 @@ INSTALL_K3S_EXEC="server --node-ip ${SERVER_IP} --write-kubeconfig-mode 644" \
 
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-kubectl wait --for=condition=Ready node --all --timeout=180s
-
 kubectl apply -f /vagrant/confs/
 
 kubectl get all
