@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
     config.vm.box = "debian/trixie64"
-    config.vm.synced_folder ".", "/vagrant", type:"rsync"
+    config.vm.synced_folder ".", "/vagrant", disabled: true
 
     k3s_token = "iotClusterToken"
 
