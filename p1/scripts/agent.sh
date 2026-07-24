@@ -12,7 +12,9 @@ apt-get install -y -qq curl
 curl -fsSL https://get.k3s.io -o /tmp/k3s-install.sh
 chmod +x /tmp/k3s-install.sh
 
-K3S_URL=https://${SERVER_IP}:6443 \
+K3S_URL="https://${SERVER_IP}:6443" \
 K3S_TOKEN="${K3S_TOKEN}" \
-INSTALL_K3S_EXEC="agent --node-ip ${NODE_IP}" \
+INSTALL_K3S_EXEC="agent --node-ip ${NODE_IP} --flannel-iface eth1" \
 /tmp/k3s-install.sh
+
+echo "DONE: k3s agent installed and joined the cluster"
