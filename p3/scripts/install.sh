@@ -43,7 +43,6 @@ kubectl rollout status statefulset/argocd-application-controller -n argocd --tim
 echo "== Applying the Argo CD application =="
 kubectl apply -f "${CONFS_DIR}/application.yaml"
 
-echo "DONE: Argo CD installed =="
-echo "admin password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d)"
-echo "UI:  kubectl port-forward svc/argocd-server -n argocd 8080:443   -> https://localhost:8080 (user: admin)"
-echo "app: kubectl port-forward svc/playground   -n dev    8888:8888   -> curl http://localhost:8888/"
+echo "DONE: Argo CD installed"
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d > argocd-pass.txt
+echo "admin password saved to argocd-pass.txt (user: admin)"
